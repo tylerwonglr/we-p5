@@ -26,6 +26,8 @@ export default class Render {
 		// background
 		background(Colors.GREEN);
 
+		this.secret();
+
 		// target
 		const {x: tx, y: ty, color: tcolor, height: theight, width: twidth, borderRadius: tborderRadius} = this.target;
 
@@ -53,7 +55,6 @@ export default class Render {
 			this.gravity = 10;
 		}
 
-		this.secret();
 	}
 
 	keyPressed() {
