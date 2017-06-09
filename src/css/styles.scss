@@ -1,37 +1,45 @@
 $blue: #96EAE7;
 
-.user-form {
-	background-color: #333;
-	border: 1px solid #888;
-	border-radius: 4px;
-	color: #FFF;
-	display: flex;
-	flex-direction: column;
-	left: 20px;
-	padding: 20px;
-	position: absolute;
-	top: 60px;
+body {
+	margin: 0;
 
-	.name-input {
+	canvas {
+		display: block;
+	}
+
+	.user-form {
+		background-color: #333;
 		border: 1px solid #888;
 		border-radius: 4px;
-		line-height: 20px;
-		padding: 8px 4px;
-	}	
+		color: #FFF;
+		display: flex;
+		flex-direction: column;
+		left: 20px;
+		padding: 20px;
+		position: absolute;
+		top: 60px;
 
-	.name-input, .name, .ready-button {
-		margin-bottom: 12px;
-	}	
+		.name-input {
+			border: 1px solid #888;
+			border-radius: 4px;
+			line-height: 20px;
+			padding: 8px 4px;
+		}	
 
-	.ready-button {
-		background-color: $blue;
-		border: none;
-		border-radius: 4px;
-		padding: 8px;
+		.name-input, .name, .ready-button {
+			margin-bottom: 12px;
+		}	
 
-		&:hover {
-			background-color: rgba($blue, 0.6);
-			cursor: pointer;
+		.ready-button {
+			background-color: $blue;
+			border: none;
+			border-radius: 4px;
+			padding: 8px;
+
+			&:hover {
+				background-color: rgba($blue, 0.6);
+				cursor: pointer;
+			}
 		}
 	}
 }
