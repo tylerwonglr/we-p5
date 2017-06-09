@@ -7,17 +7,16 @@ export default class Render {
 	constructor() {
 		this.draw = this.draw.bind(this);
 		this.setup = this.setup.bind(this);
-		this.keyPressed = this.keyPressed.bind(this);
 
 		this.screen = {};
 
-		this.gravity = 5;
+		this.gravity = 10;
 	}
 
 	setup() {
 		createCanvas(windowWidth, windowHeight);
 
-		this.player = new Player(windowWidth / 2, windowHeight);
+		this.player = new Player(windowWidth / 2, windowHeight / 2);
 
 		this.target = new Target(windowWidth / 2, 0);
 	}
@@ -39,17 +38,20 @@ export default class Render {
 		fill(pcolor);
 		ellipse(px, py, pradius, pradius);
 
+		if (keyIsDown(32)) {
+			this.player.jump();
+
+			this.gravity = this.gravity * 2;
+		}
+		else {
+			this.gravity = this.gravity * 2;
+		}
+
 		// gravity
 		if (py <= windowHeight - this.gravity) {
 			this.player.y += this.gravity;
 		}
 
 		// etc.
-	}
-
-	keyPressed() {
-		if (keyCode === 32) {
-			this.player.jump();
-		}
 	}
 }
