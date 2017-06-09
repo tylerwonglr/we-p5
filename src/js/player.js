@@ -9,11 +9,17 @@ export default class Player extends Particle {
 		this.jumpHeight = 50;
 		this.radius = 50;
 		this.canJump = true;
+		this.counter = 0;
 	}
 
 	jump() {
-		if (this.y >= this.jumpHeight) {
+		if (this.y >= this.jumpHeight + 75) {
 			this.y -= this.jumpHeight;
+
+			if (this.y <= 125) {
+				this.counter++;
+				console.log(this.counter);
+			}
 		}
 
 		// if (this.y <= target.y + target.radius) {

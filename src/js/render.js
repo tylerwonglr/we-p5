@@ -12,6 +12,8 @@ export default class Render {
 		this.screen = {};
 
 		this.gravity = 10;
+
+		this.timer = 0;
 	}
 
 	setup() {
@@ -61,6 +63,10 @@ export default class Render {
 		if (keyCode === 32 && this.player.y >= windowHeight - 10) {
 			this.player.canJump = true;
 		}
+	}
+
+	touched() {
+		if (target)
 	}
 
 	secret() {
