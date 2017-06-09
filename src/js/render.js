@@ -19,7 +19,7 @@ export default class Render {
 
 		this.player = new Player(windowWidth / 2, windowHeight / 2);
 
-		this.target = new Target(windowWidth / 2, 0);
+		this.target = new Target((windowWidth / 2) - 100, 0);
 	}
 
 	draw() {
@@ -27,11 +27,11 @@ export default class Render {
 		background(Colors.GREEN);
 
 		// target
-		const {x: tx, y: ty, color: tcolor, radius: tradius} = this.target;
+		const {x: tx, y: ty, color: tcolor, height: theight, width: twidth, borderRadius: tborderRadius} = this.target;
 
 		fill(tcolor);
 		noStroke();
-		ellipse(tx, ty, tradius, tradius);
+		rect(tx, ty, twidth, theight, tborderRadius);
 
 		// create player
 		const {x: px, y: py, canJump: pCanJump, color: pcolor, jumpHeight: pjumpHeight, radius: pradius} = this.player;
