@@ -28,6 +28,18 @@ export default class Render {
 		// background
 		background(Colors.GREEN);
 
+		if (this.player.counter >= 5 && this.player.counter < 10) {
+			strokeWeight(4);
+			stroke(255);
+
+			for (var x = 0; x < width; x += 50) {
+				for (var y = 0; y <= height; y += 50) {
+					fill(random(255), 0, random(255));
+					ellipse(x, y, 25, 25);
+				}
+			}
+		}
+
 		this.secret();
 
 		// create player
@@ -61,8 +73,6 @@ export default class Render {
 		fill('white');
 		text(this.player.counter, tx + 75, ty + 75);
 
-
-		// if (this.player.counter == )
 	}
 
 	keyPressed() {
