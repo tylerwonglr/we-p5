@@ -1,0 +1,7 @@
+{
+	"id": "websocket",
+	"type": "wedeploy/nodejs:latest",
+	"hooks": {
+		"build": "npm i && npm start"
+	}
+}
