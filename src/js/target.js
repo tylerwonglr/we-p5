@@ -5,7 +5,7 @@ export default class Target extends Particle {
 	constructor(x, y) {
 		super(x,y);
 
-		this.color = Colors.RED;
+		this.color = Colors.GRAY;
 		this.radius = 50;
 	}
 }
