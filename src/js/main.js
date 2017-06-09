@@ -1,10 +1,11 @@
-import draw from './draw';
+import Render from './render';
 
-const drawing = new draw();
+const render = new Render();
 
 function main(window) {
-	window.setup = drawing.setup;
-	window.draw = drawing.draw;
+	window.setup = render.setup;
+	window.draw = render.draw;
+	window.keyPressed = render.keyPressed;
 }
 
 main(window);
