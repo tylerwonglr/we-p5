@@ -1,4 +1,6 @@
+// import socketio from 'io';
 import {bindAll} from 'lodash';
+const socketio = require('socket.io-client');
 
 class Score {
 	constructor() {
@@ -7,10 +9,33 @@ class Score {
 			'createElement',
 			'setReady'
 		);
+
+		this.socket = socketio("http://172.16.22.156:3000");
+
+		this.socket.on(
+			'connect',
+			() => {
+				console.log('attempingconnection')
+			}
+		);
 	}
 
 	setReady() {
 		document.getElementById('readyButton').innerHTML = 'waiting for opponent...';
+		const name = document.getElementById('userName').value;
+				
+				let data = {
+					socketId: this.socket.id,
+					name,
+					ready: true
+				}
+
+				this.socket.emit(
+					'add user',
+					data, resp => {
+						console.log(resp);
+					}
+				);
 	}
 
 	createElement() {
