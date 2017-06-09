@@ -26,7 +26,22 @@ export default class Render {
 
 	draw() {
 		// background
-		background(Colors.GREEN);
+		background(Colors.BLUE);
+
+
+
+		for (var x = 0; x < width; x += 300) {
+			for (var y = 0; y <= height; y += 200) {
+				fill('white');
+				ellipse(x + 150, y + 25, 100, 50);
+				ellipse(x + 100, y + 50, 100, 50);
+				ellipse(x + 150, y + 75, 100, 50);
+				ellipse(x + 200, y + 55, 100, 50);
+
+				y *= 1.2;
+			}
+		}
+
 
 		if (this.player.counter >= 5 && this.player.counter < 10) {
 			strokeWeight(4);
@@ -143,6 +158,18 @@ export default class Render {
 				// fill(random(255), 0, random(255));
 				// ellipse(200, y, 25, 25);
 			// }
+		}
+
+		if (keyIsDown(80)) {
+			for (var x = 0; x < width; x += 300) {
+				for (var y = 0; y <= height; y += 300) {
+					fill('white');
+					ellipse(x + random(150), y + random(25), 100, 50);
+					ellipse(x + random(100), y + random(50), 100, 50);
+					ellipse(x + random(150), y + random(75), 100, 50);
+					ellipse(x + random(200), y + random(55), 100, 50);
+				}
+			}
 		}
 	}
 }
