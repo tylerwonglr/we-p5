@@ -14,6 +14,8 @@ export default class Render {
 		this.gravity = 10;
 
 		this.timer = 0;
+
+		this.image = '';
 	}
 
 	setup() {
@@ -22,6 +24,8 @@ export default class Render {
 		this.player = new Player(windowWidth / 2, windowHeight / 2);
 
 		this.target = new Target((windowWidth / 2) - 100, 0);
+
+		this.image = loadImage("https://dl.dropboxusercontent.com/content_link/jVLXXeo3MLw9ub5BVdUXzoShRD5V7DhHDNBk2VZHn56ZiNh8ZuVvHDhXCyNIre6K/file?dl=0&duc_id=cEW7nk4fV4drF8BPNz6Zq0JGEWpFdKxlftKBJqJEzF1d1y4HHOb9EJRbpbNWa8Fp&raw=1&size=2048x1536&size_mode=3");
 	}
 
 	draw() {
@@ -46,7 +50,7 @@ export default class Render {
 		const {x: px, y: py, canJump: pCanJump, color: pcolor, jumpHeight: pjumpHeight, radius: pradius} = this.player;
 
 		fill(pcolor);
-		ellipse(px, py, pradius, pradius);
+		image(this.image, px - 75, py - 75, 150, 150);
 
 		if (keyIsDown(32) && pCanJump) {
 			this.player.jump();
