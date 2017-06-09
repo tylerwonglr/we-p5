@@ -1,5 +1,6 @@
 import p5 from 'p5';
 import Player from './player';
+import * as Colors from './colors';
 
 export default class Render {
 	constructor() {
@@ -19,7 +20,7 @@ export default class Render {
 	draw() {
 		const {x, y, color, jumpHeight} = this.player;
 
-		background('#DDD');
+		background(Colors.BLUE);
 
 		fill(color);
 		ellipse(x, y, 50, 50);

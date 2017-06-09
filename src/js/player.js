@@ -1,10 +1,10 @@
-import * as colors from './colors';
+import * as Colors from './colors';
 
 export default class Player {
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
-		this.color = colors.ORANGE;
+		this.color = Colors.ORANGE;
 		this.jumpHeight = 100;
 	}
 
