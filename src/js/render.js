@@ -59,7 +59,7 @@ export default class Render {
 		}
 
 
-		if (this.player.counter >= 5 && this.player.counter < 10) {
+		if (this.player.counter >= 15 && this.player.counter < 20) {
 			strokeWeight(4);
 			stroke(255);
 
