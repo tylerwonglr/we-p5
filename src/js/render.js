@@ -57,6 +57,9 @@ export default class Render {
 		noStroke();
 		rect(tx, ty, twidth, theight, tborderRadius);
 
+		textSize(64);
+		fill('white');
+		text(this.player.counter, tx + 75, ty + 75);
 	}
 
 	keyPressed() {
@@ -66,7 +69,7 @@ export default class Render {
 	}
 
 	touched() {
-		if (target)
+		// if (target)
 	}
 
 	secret() {
