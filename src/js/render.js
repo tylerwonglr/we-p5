@@ -7,6 +7,7 @@ export default class Render {
 	constructor() {
 		this.draw = this.draw.bind(this);
 		this.setup = this.setup.bind(this);
+		this.keyPressed = this.keyPressed.bind(this);
 
 		this.screen = {};
 
@@ -33,25 +34,29 @@ export default class Render {
 		ellipse(tx, ty, tradius, tradius);
 
 		// create player
-		const {x: px, y: py, color: pcolor, jumpHeight: pjumpHeight, radius: pradius} = this.player;
+		const {x: px, y: py, canJump: pCanJump, color: pcolor, jumpHeight: pjumpHeight, radius: pradius} = this.player;
 
 		fill(pcolor);
 		ellipse(px, py, pradius, pradius);
 
-		if (keyIsDown(32)) {
+		if (keyIsDown(32) && pCanJump) {
 			this.player.jump();
+		}
+		else if (py <= windowHeight - this.gravity) {
+			this.gravity = this.gravity * 1.1;
 
-			this.gravity = this.gravity * 2;
+			this.player.y += this.gravity;
+
+			this.player.canJump = false;
 		}
 		else {
-			this.gravity = this.gravity * 2;
+			this.gravity = 10;
 		}
+	}
 
-		// gravity
-		if (py <= windowHeight - this.gravity) {
-			this.player.y += this.gravity;
+	keyPressed() {
+		if (keyCode === 32 && this.player.y >= windowHeight - 10) {
+			this.player.canJump = true;
 		}
-
-		// etc.
 	}
 }

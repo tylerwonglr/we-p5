@@ -1,5 +1,3 @@
-import p5 from 'p5';
-
 import Particle from './particle';
 import * as Colors from './colors';
 
@@ -8,17 +6,14 @@ export default class Player extends Particle {
 		super(x,y);
 
 		this.color = Colors.ORANGE;
-		this.jumpHeight = 100;
+		this.jumpHeight = 50;
 		this.radius = 50;
-
-		this.velocity = createVector(0, -10);
+		this.canJump = true;
 	}
 
 	jump() {
 		if (this.y >= this.jumpHeight) {
-			console.log(this.velocity);
-
-			this.y += this.velocity.y * 0.5;
+			this.y -= this.jumpHeight;
 		}
 
 		// if (this.y <= target.y + target.radius) {
