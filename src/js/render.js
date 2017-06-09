@@ -60,6 +60,9 @@ export default class Render {
 		textSize(64);
 		fill('white');
 		text(this.player.counter, tx + 75, ty + 75);
+
+
+		// if (this.player.counter == )
 	}
 
 	keyPressed() {
