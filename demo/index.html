@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Socket.IO Chat Example</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+Testing User :)
+
+<script src="/socket.io.js"></script>
+
+<script>
+	let socket = io('http://localhost:3000');
+
+	socket.on('connect', function(){
+		let data = {
+			socketId: socket.id,
+			name: 'Clovis Neto',
+			ready: false
+		};
+		console.log(data)
+
+		socket.emit('add user', data, function(resp){
+			console.log(resp);
+		});
+	});
+</script>
+</body>
+</html>
