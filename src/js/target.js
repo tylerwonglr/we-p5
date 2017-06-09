@@ -6,6 +6,8 @@ export default class Target extends Particle {
 		super(x,y);
 
 		this.color = Colors.GRAY;
-		this.radius = 50;
+		this.height = 100;
+		this.width = 200;
+		this.borderRadius = 5;
 	}
 }
