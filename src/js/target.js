@@ -1,9 +1,10 @@
+import Particle from './particle';
 import * as Colors from './colors';
 
-export default class Target {
+export default class Target extends Particle {
 	constructor(x, y) {
-		this.x = x;
-		this.y = y;
+		super(x,y);
+
 		this.color = Colors.RED;
 		this.radius = 50;
 	}
