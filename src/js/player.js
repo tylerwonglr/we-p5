@@ -6,6 +6,7 @@ export default class Player {
 		this.y = y;
 		this.color = Colors.ORANGE;
 		this.jumpHeight = 100;
+		this.radius = 50;
 	}
 
 	jump() {

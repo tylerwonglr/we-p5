@@ -18,12 +18,12 @@ export default class Render {
 	}
 
 	draw() {
-		const {x, y, color, jumpHeight} = this.player;
+		const {playerX, playerY, playerColor, playerJumpHeight} = this.player;
 
 		background(Colors.BLUE);
 
-		fill(color);
-		ellipse(x, y, 50, 50);
+		fill(playerColor);
+		ellipse(playerX, playerY, 50, 50);
 	}
 
 	keyPressed() {
