@@ -24,7 +24,7 @@ export default class Render {
 
 	draw() {
 		// background
-		background(Colors.BLUE);
+		background(Colors.GREEN);
 
 		// target
 		const {x: tx, y: ty, color: tcolor, radius: tradius} = this.target;
