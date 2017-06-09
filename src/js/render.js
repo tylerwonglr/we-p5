@@ -22,7 +22,7 @@ export default class Render {
 
 		background(Colors.BLUE);
 
-		fill(polor);
+		fill(pcolor);
 		ellipse(px, py, pradius, pradius);
 	}
 
