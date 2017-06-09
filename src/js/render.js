@@ -28,13 +28,6 @@ export default class Render {
 
 		this.secret();
 
-		// target
-		const {x: tx, y: ty, color: tcolor, height: theight, width: twidth, borderRadius: tborderRadius} = this.target;
-
-		fill(tcolor);
-		noStroke();
-		rect(tx, ty, twidth, theight, tborderRadius);
-
 		// create player
 		const {x: px, y: py, canJump: pCanJump, color: pcolor, jumpHeight: pjumpHeight, radius: pradius} = this.player;
 
@@ -54,6 +47,13 @@ export default class Render {
 		else {
 			this.gravity = 10;
 		}
+
+		// target
+		const {x: tx, y: ty, color: tcolor, height: theight, width: twidth, borderRadius: tborderRadius} = this.target;
+
+		fill(tcolor);
+		noStroke();
+		rect(tx, ty, twidth, theight, tborderRadius);
 
 	}
 
