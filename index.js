@@ -10,7 +10,7 @@ let EndpointsClass = require('./endpoint/Endpoints');
 let Endpoints = new EndpointsClass();
 
 server.listen(port, function () {
-	console.log('Server listening at port %d', port);
+	console.log('Server listening at port %d :)', port);
 });
 
 Endpoints.setup(io);
