@@ -21,7 +21,9 @@ export default class Render {
 
 		this.player = new Player(windowWidth / 2, windowHeight / 2);
 
-		this.target = new Target((windowWidth / 2) - 100, 0);
+		this.target = new Target((windowWidth / 2) - 100, 0, Colors.GRAY);
+
+		this.target2 = new Target((windowWidth / 1.2) - 100, 0, Colors.RED);
 	}
 
 	draw() {
@@ -96,6 +98,18 @@ export default class Render {
 		textSize(64);
 		fill('white');
 		text(this.player.counter, tx + 75, ty + 75);
+
+		// target2
+		const {x: t2x, y: t2y, color: t2color, height: t2height, width: t2width, borderRadius: t2borderRadius} = this.target2;
+
+		fill(t2color);
+		noStroke();
+		rect(t2x, t2y, t2width, t2height, t2borderRadius);
+
+		textSize(64);
+		fill('white');
+		// tODO; UPDATE PLAYER COUNTER TO ENEMY COUNTRE
+		text(this.player.counter, t2x + 75, t2y + 75);
 
 	}
 
