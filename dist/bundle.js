@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c03755c06d60d5b7abe1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3a07f587fbaccaf80c51"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -706,7 +706,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(2)(__webpack_require__.s = 2);
+/******/ 	return hotCreateRequire(3)(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -736,15 +736,41 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Particle = function Particle(x, y) {
+	_classCallCheck(this, Particle);
+
+	this.x = x;
+	this.y = y;
+};
+
+exports.default = Particle;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _p = __webpack_require__(4);
+var _p = __webpack_require__(6);
 
 var _p2 = _interopRequireDefault(_p);
 
-var _player2 = __webpack_require__(3);
+var _player2 = __webpack_require__(4);
 
 var _player3 = _interopRequireDefault(_player2);
+
+var _target2 = __webpack_require__(5);
+
+var _target3 = _interopRequireDefault(_target2);
 
 var _colors = __webpack_require__(0);
 
@@ -765,6 +791,8 @@ var Render = function () {
 		this.keyPressed = this.keyPressed.bind(this);
 
 		this.screen = {};
+
+		this.gravity = 5;
 	}
 
 	_createClass(Render, [{
@@ -773,12 +801,26 @@ var Render = function () {
 			createCanvas(windowWidth, windowHeight);
 
 			this.player = new _player3.default(windowWidth / 2, windowHeight);
+
+			this.target = new _target3.default(windowWidth / 2, 0);
 		}
 	}, {
 		key: 'draw',
 		value: function draw() {
 			// background
 			background(Colors.BLUE);
+
+			// target
+			var _target = this.target,
+			    tx = _target.x,
+			    ty = _target.y,
+			    tcolor = _target.color,
+			    tradius = _target.radius;
+
+
+			fill(tcolor);
+			noStroke();
+			ellipse(tx, ty, tradius, tradius);
 
 			// create player
 			var _player = this.player,
@@ -791,6 +833,11 @@ var Render = function () {
 
 			fill(pcolor);
 			ellipse(px, py, pradius, pradius);
+
+			// gravity
+			if (py <= windowHeight - this.gravity) {
+				this.player.y += this.gravity;
+			}
 
 			// etc.
 		}
@@ -809,13 +856,13 @@ var Render = function () {
 exports.default = Render;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _render = __webpack_require__(1);
+var _render = __webpack_require__(2);
 
 var _render2 = _interopRequireDefault(_render);
 
@@ -832,7 +879,7 @@ function main(window) {
 main(window);
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -844,23 +891,36 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _particle = __webpack_require__(1);
+
+var _particle2 = _interopRequireDefault(_particle);
+
 var _colors = __webpack_require__(0);
 
 var Colors = _interopRequireWildcard(_colors);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Player = function () {
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Player = function (_Particle) {
+	_inherits(Player, _Particle);
+
 	function Player(x, y) {
 		_classCallCheck(this, Player);
 
-		this.x = x;
-		this.y = y;
-		this.color = Colors.ORANGE;
-		this.jumpHeight = 100;
-		this.radius = 50;
+		var _this = _possibleConstructorReturn(this, (Player.__proto__ || Object.getPrototypeOf(Player)).call(this, x, y));
+
+		_this.color = Colors.ORANGE;
+		_this.jumpHeight = 100;
+		_this.radius = 50;
+		return _this;
 	}
 
 	_createClass(Player, [{
@@ -880,12 +940,59 @@ var Player = function () {
 	}]);
 
 	return Player;
-}();
+}(_particle2.default);
 
 exports.default = Player;
 
 /***/ }),
-/* 4 */
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _particle = __webpack_require__(1);
+
+var _particle2 = _interopRequireDefault(_particle);
+
+var _colors = __webpack_require__(0);
+
+var Colors = _interopRequireWildcard(_colors);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Target = function (_Particle) {
+	_inherits(Target, _Particle);
+
+	function Target(x, y) {
+		_classCallCheck(this, Target);
+
+		var _this = _possibleConstructorReturn(this, (Target.__proto__ || Object.getPrototypeOf(Target)).call(this, x, y));
+
+		_this.color = Colors.RED;
+		_this.radius = 50;
+		return _this;
+	}
+
+	return Target;
+}(_particle2.default);
+
+exports.default = Target;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var require;var require;/*! p5.js v0.5.11 June 01, 2017 */
@@ -35995,10 +36102,10 @@ module.exports = {
 };
 },{}]},{},[33])(33)
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports) {
 
 var g;
