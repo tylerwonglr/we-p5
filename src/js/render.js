@@ -33,10 +33,19 @@ export default class Render {
 		for (var x = 0; x < width; x += 300) {
 			for (var y = 0; y <= height; y += 200) {
 				fill('white');
-				ellipse(x + 150, y + 25, 100, 50);
-				ellipse(x + 100, y + 50, 100, 50);
-				ellipse(x + 150, y + 75, 100, 50);
-				ellipse(x + 200, y + 55, 100, 50);
+
+				let randFactor = 0;
+
+				if (frameCount % 60 == 0 || frameCount % 60 == 1 || frameCount % 60 == 2 || frameCount % 60 == 3 || frameCount % 60 == 4 || frameCount % 60 == 0 || frameCount % 60 == 5 || frameCount % 60 == 6 || frameCount % 60 == 7 || frameCount % 60 == 8 ) {
+					randFactor = random(0);
+				} else {
+					randFactor = random(0,1)
+				}
+
+				ellipse(x + 150 + randFactor, y + 25+ randFactor, 100, 50);
+				ellipse(x + 100 + randFactor, y + 50+ randFactor, 100, 50);
+				ellipse(x + 150 + randFactor, y + 75+ randFactor, 100, 50);
+				ellipse(x + 200 + randFactor, y + 55+ randFactor, 100, 50);
 
 				y *= 1.2;
 			}
