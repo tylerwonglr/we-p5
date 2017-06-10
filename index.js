@@ -1,12 +1,12 @@
 "use strict";
 
 const express = require('express');
-const allowCORS = require('config/cors');
+const allowCORS = require('./config/cors');
 
 let app = express();
 let server = require('http').createServer(app);
 let io = require('socket.io')(server);
-let port = process.env.PORT || 80;
+let port = process.env.PORT || 3000;
 let EndpointsClass = require('./endpoint/Endpoints');
 let Endpoints = new EndpointsClass();
 

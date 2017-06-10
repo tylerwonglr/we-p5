@@ -11,6 +11,7 @@ class Endpoints {
 		io.on('connection', function (socket) {
 			// when the client emits 'add user', this listens and executes
 			socket.on('add user', function (clientUser, fn) {
+				console.log(clientUser);
 				let User = new UserClass(clientUser);
 				let Room;
 				
@@ -29,7 +30,7 @@ class Endpoints {
 				
 				fn({
 					message: 'One user joined',
-					roomName: Room.name
+					room: Room
 				});
 				
 				// echo globally (all clients) that a person has connected
@@ -57,6 +58,29 @@ class Endpoints {
 					roomName: socket.roomName
 				});
 			});
+			
+			
+			socket.on('add score in user', function (clientUser, fn) {
+				console.log('----------------------------------------------------'.green)
+				console.log(`Score added in an user`.green)
+				console.log(clientUser);
+				console.log('----------------------------------------------------'.green)
+				
+				this.searchRoom(clientUser, function(room){
+					return fn({
+						message: 'Score added in an user',
+						room: room
+					});
+				});
+			});
+		});
+	}
+	
+	searchRoom(socket, callback){
+		rooms.forEach(function(room){
+			if(room.name == socket.roomName && callback){
+				return callback(room);
+			}
 		});
 	}
 }
