@@ -16,6 +16,9 @@ class Score {
 			'connect',
 			() => {
 				console.log('attempingconnection')
+				this.socket.emit('user joined', function(user){
+					console.log(user)
+				})
 			}
 		);
 	}
